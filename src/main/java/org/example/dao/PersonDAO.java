@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PersonDAO extends BaseDAO<Person>{
 
-    protected PersonDAO(Connection connection) {
+    public PersonDAO(Connection connection) {
         super(connection);
     }
 
@@ -53,17 +53,17 @@ public class PersonDAO extends BaseDAO<Person>{
     }
 
     @Override
-    public Person get(Person element) throws SQLException {
+    public Person get(int id) throws SQLException {
         Person person=null;
         request = "select * from person where id=?";
         statement = _connection.prepareStatement(request);
-        statement.setInt(1,element.getId());
+        statement.setInt(1,id);
         int nbRows=statement.executeUpdate();
         if (resultSet.next()){
-            int id=resultSet.getInt("id");
+            int ide=resultSet.getInt("id");
             String firstName=resultSet.getString("first_name");
             String last_name=resultSet.getString("last_name");
-            person=new Person(id,firstName,last_name);
+            person=new Person(ide,firstName,last_name);
 
         }
         return person;
