@@ -31,6 +31,7 @@ public class Person {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+
     }
 
     public String getLastName() {
@@ -39,6 +40,7 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+
     }
 
     @Override
